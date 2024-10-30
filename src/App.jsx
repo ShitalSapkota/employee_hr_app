@@ -1,13 +1,20 @@
-import './App.css'
+import "./App.css";
+import EmployeeList from "./components/EmployeeList/EmployeeList";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
       <div>
-        <h2>Employee HR App</h2>
+        <Header />
+        <main>
+          <EmployeeList />
+        </main>
+        <Footer />
       </div>
     </>
   );
 }
 
-export default App
+export default App;
