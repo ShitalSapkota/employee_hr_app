@@ -1,9 +1,17 @@
-.displayCards {
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .card {
     flex: 1;
+    padding: 1rem;
+    margin: 1rem;
+    width: 20vw;
+    height: 60vh;
     background-color: bisque;
+}
+
+@media screen and (max-width: 750px) {
+    .card {
+        width: 80vw; 
+        height: auto; 
+        margin: 0.5rem;
+    }
 }
