@@ -3,6 +3,7 @@
     flex-wrap: wrap;
 }
 
-.cards {
+.card {
     flex: 1;
+    background-color: bisque;
 }

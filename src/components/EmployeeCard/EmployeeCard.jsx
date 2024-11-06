@@ -16,7 +16,7 @@ const EmployeeCard = (props) => {
 
   return (
     <div className="displayCards">
-      <div className="cards">
+      <div className="card">
         <p>Name: {props.name}</p>
         <p>Role: {role} </p>
         <p>Department: {props.department} </p>

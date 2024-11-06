@@ -19,8 +19,8 @@ or
 - Header and Footer
 
 ### Using props and usestate
-    - use props and useState in EmployeeCard for updating role.
+    - use props and useState in `EmployeeCard` for updating role.
  
 ### Event handler
-    - use event handler in EmployeeCard for updating role. 
+    - use event handler in `EmployeeCard` for updating role. 
   
