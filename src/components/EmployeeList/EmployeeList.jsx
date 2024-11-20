@@ -1,6 +1,7 @@
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import "./EmployeeList.css";
-import teachersData from "../../teachersData";
+import Button from "../Button/Button";
+import teachersData from "../../data/teachersData";
 import { useState } from "react";
 
 const EmployeeList = () => {
@@ -11,13 +12,10 @@ const EmployeeList = () => {
   };
 
   return (
-    <div>
+    <main>
       <h2 className="list-title">List of the Employees (Teachers)</h2>
-      <button onClick={clickHandler}>
-        {isLoggedIn ? "Log Out" : "Log In"}
-      </button>
-
-      <main className="card-container">
+      <Button click={clickHandler} text={isLoggedIn ? "Log Out" : "Log In"} />
+      <div className="card-container">
         {isLoggedIn ? (
           teachersData.map((teacher) => (
             <div>
@@ -40,8 +38,8 @@ const EmployeeList = () => {
             <p>Please Log in to see the lists</p>
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 
