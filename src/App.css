@@ -5,12 +5,7 @@
   text-align: center;
 }
 
-
-.card-container {
+main{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap; 
-  width: 80%;
+  justify-content: center;
 }

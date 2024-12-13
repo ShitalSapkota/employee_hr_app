@@ -1,27 +1,7 @@
-
 .card {
-    background-color: white;
-    width: 280px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 5px;
-    padding: 5px;
-    transition: transform 0.3s ease;
-}
-
-.card-image img{
-    width: 150px;
-    height: 150px;
-    
-}
-
-@media screen and (max-width: 750px) {
-    .card {
-        width: 80vw; 
-        height: auto; 
-        margin: 0.5rem;
-    }
+    background: #c0d0f5;
+    border-radius: 5px;
+    color:#333;
+    padding: 1rem;
+    width:180px;
 }
