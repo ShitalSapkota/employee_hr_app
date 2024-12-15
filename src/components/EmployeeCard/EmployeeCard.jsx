@@ -3,10 +3,19 @@ import Button from "../Button/Button";
 import "./EmployeeCard.css";
 import calcYearsWorked from "../utilis/yearsCalc";
 
-const EmployeeCard = (props) => {
+const EmployeeCard = ({
+  name,
+  age,
+  role,
+  department,
+  location,
+  start_date,
+}) => {
   const [promotedRole, setRole] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [employee, setEmployee] = useState({ role, department, location });
 
-  const yearsWorked = calcYearsWorked(props.start_date);
+  const yearsWorked = calcYearsWorked(start_date);
 
   const isProbation = yearsWorked < 0.5;
   const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
@@ -15,13 +24,29 @@ const EmployeeCard = (props) => {
     setRole(!promotedRole);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEmployee((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const renderEditableField = (value, name) =>
+    isEdit ? (
+      <div className="inputField">
+        <input value={value} name={name} onChange={handleInputChange} />
+      </div>
+    ) : (
+      <p className={name}>{value}</p>
+    );
+
   return (
     <div className="card">
       <div className="card-header">
         <div className="card-image">
-          <img src={`https://robohash.org/${props.name}?set=set5`} />
+          <img src={`https://robohash.org/${name}?set=set5`} />
         </div>
-        <p className="name">{props.name}</p>
+        <p className="name">
+          {name} ({age})
+        </p>
         <div className="card-icons">
           {promotedRole && (
             <div>
@@ -49,9 +74,9 @@ const EmployeeCard = (props) => {
       </div>
       <div className="card-content">
         <div className="card-data">
-          <p>Roll: {props.role}</p>
-          <p>Department: {props.department}</p>
-          <p>Location: {props.location}</p>
+          {renderEditableField(employee.role, "role")}
+          {renderEditableField(employee.department, "department")}
+          {renderEditableField(employee.location, "location")}
         </div>
       </div>
       <div className="card-footer">
@@ -59,9 +84,13 @@ const EmployeeCard = (props) => {
           onClick={clickHandler}
           text={promotedRole ? "Demote" : "Promote"}
         />
+        <Button
+          onClick={() => setIsEdit((prev) => !prev)}
+          text={isEdit ? "Save" : "Edit"}
+        />
         <p className="years">
           {yearsWorked} <span>years in school </span>
-          <span className="date">({props.start_date})</span>
+          <span className="date">({start_date})</span>
         </p>
       </div>
     </div>
