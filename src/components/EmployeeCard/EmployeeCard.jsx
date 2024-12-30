@@ -4,6 +4,7 @@ import "./EmployeeCard.css";
 import calcYearsWorked from "../utilis/yearsCalc";
 
 const EmployeeCard = ({
+  id,
   name,
   age,
   role,
@@ -42,11 +43,12 @@ const EmployeeCard = ({
     <div className="card">
       <div className="card-header">
         <div className="card-image">
-          <img src={`https://robohash.org/${name}?set=set5`} />
+          <img src={`https://avatar.iran.liara.run/public/${id}`} />
         </div>
         <p className="name">
           {name} ({age})
         </p>
+
         <div className="card-icons">
           {promotedRole && (
             <div>

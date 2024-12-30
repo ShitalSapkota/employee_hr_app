@@ -6,8 +6,12 @@ const Header = (props) => {
 
   return (
     <header>
-      <h1>Employee dashboard</h1>
-      <Button onClick={props.onClick} text={buttonText} />
+      <div>
+        <h1>Employee Dashboard</h1>
+      </div>
+      <div>
+        <Button onClick={props.onClick} text={buttonText} />
+      </div>
     </header>
   );
 };

@@ -9,9 +9,9 @@ button {
     font-size: 0.8em;
     font-weight: 500;
     font-family: inherit;
-    background-color: transparent;
+    background-color: #fff;
     cursor: pointer;
-    color:#005872;
+    color:#014a61;
     transition: all 0.25s;
   }
   
@@ -28,7 +28,7 @@ button {
 
   @media (prefers-color-scheme: light) {
     button {
-      background-color: #f9f9f9;
+      background-color: #a66df6;
     }
   }
   

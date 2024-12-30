@@ -1,6 +1,11 @@
 header {
     font-size: 2rem;
-    padding-bottom: 2rem;
+    background-color: darkblue;
+    color: rgb(239, 241, 247);
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    margin: 2px;
   }
   
   header h1 {
