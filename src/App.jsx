@@ -1,26 +1,24 @@
 import { useState } from "react";
+import { RouterProvider } from "react-router-dom";
+import createRoutes from "./routes/appRoutes.jsx";
 import "./App.css";
-import EmployeeList from "./components/EmployeeList/EmployeeList.jsx";
-import Footer from "./components/Footer/Footer.jsx";
-import Header from "./components/Header/Header.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
+    setIsLoggedIn((prevState) => !prevState);
   };
 
+  const router = createRoutes(isLoggedIn, loginHandler);
+
   return (
-    <>
-      <div>
-        <Header onClick={loginHandler} loginStatus={isLoggedIn} />
-        <main>
-          {isLoggedIn ? <EmployeeList /> : <p>Please log in to start</p>}
-        </main>
-        <Footer />
-      </div>
-    </>
+    <RouterProvider
+      router={router}
+      future={{
+        v7_startTransition: true,
+      }}
+    />
   );
 }
 

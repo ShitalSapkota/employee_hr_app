@@ -3,15 +3,7 @@ import Button from "../Button/Button";
 import "./EmployeeCard.css";
 import calcYearsWorked from "../utilis/yearsCalc";
 
-const EmployeeCard = ({
-  id,
-  name,
-  age,
-  role,
-  department,
-  location,
-  start_date,
-}) => {
+const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   const [promotedRole, setRole] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [employee, setEmployee] = useState({ role, department, location });
@@ -45,9 +37,7 @@ const EmployeeCard = ({
         <div className="card-image">
           <img src={`https://avatar.iran.liara.run/public/${id}`} />
         </div>
-        <p className="name">
-          {name} ({age})
-        </p>
+        <p className="name">{name}</p>
 
         <div className="card-icons">
           {promotedRole && (

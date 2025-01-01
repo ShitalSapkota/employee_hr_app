@@ -1,16 +1,29 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Header.css";
 
-const Header = (props) => {
-  const buttonText = props.loginStatus ? "Log out" : "Log in";
+const Header = ({ isLoggedIn, loginHandler }) => {
+  const buttonText = isLoggedIn ? "Log out" : "Log in";
 
   return (
     <header>
-      <div>
+      <Link to="/">
         <h1>Employee Dashboard</h1>
-      </div>
-      <div>
-        <Button onClick={props.onClick} text={buttonText} />
+      </Link>
+      <div className="navbar">
+        <nav>
+          <ul>
+            <li>
+              <Link to="employees"> Employees</Link>
+            </li>
+            <li>
+              <Link to="new">Add new</Link>
+            </li>
+            <li>
+              <Button onClick={loginHandler} text={buttonText} />
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );
