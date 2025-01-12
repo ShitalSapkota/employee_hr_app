@@ -8,6 +8,7 @@ const Login = ({ loginHandler }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
   const checkCredentials = (e) => {
     e.preventDefault();
     if (
