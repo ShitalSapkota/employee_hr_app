@@ -1,16 +1,16 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-
-.card-container {
+main{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap; 
-  width: 80%;
+  justify-content: center;
+}
+
+main p {
+  font-size: 1.2rem;
+  text-align: center;
 }

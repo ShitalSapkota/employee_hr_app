@@ -1,0 +1,44 @@
+.singlePage-content {
+    background-color: rgb(204, 220, 251);
+    padding: 3rem;
+    margin-top: 2rem;
+    color: #333;
+    text-align: left;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+    height: 40vh;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skills{
+  margin-top: 25px;
+  width: 60%;
+}
+
+.singlePage-content p{
+    text-align: left;
+    font-size: 1rem;
+}
+
+.singlePage-content span {
+  border: 1px solid gray;
+  border-radius: 30px;
+  margin-right: 0.5rem;
+  padding: 0rem 0.5rem;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+hr.solid {
+  border-top: 3px solid #909ff6;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}

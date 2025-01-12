@@ -1,48 +1,43 @@
-import EmployeeCard from "../EmployeeCard/EmployeeCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import EmployeeCard from "../EmployeeCard/EmployeeCard.jsx";
 import "./EmployeeList.css";
-import Button from "../Button/Button";
-import teachersData from "../../data/teachersData";
-import { useState } from "react";
 
 const EmployeeList = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const clickHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("http://localhost:3002/employees");
+        setEmployees(response.data);
+      } catch (err) {
+        setError("Failed to fetch employees data");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEmployees();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <main>
-      <h2 className="list-title">List of the Employees (Teachers)</h2>
-      <Button click={clickHandler} text={isLoggedIn ? "Log Out" : "Log In"} />
-      <div className="card-container">
-        {isLoggedIn ? (
-          teachersData.map((teacher) => (
-            <div>
-              <EmployeeCard
-                key={teacher.id}
-                // key should be provided always when using list/array for dynamic value
-                {...teacher} // we can fetch all data at once like this
-                /*    name={teacher.name}
-                  age={teacher.age}
-                  role={teacher.role}
-                  department={teacher.department}
-                  salary={teacher.salary}
-                  start_date={teacher.start_date}
-                  location={teacher.location} */
-              />
-            </div>
-          ))
-        ) : (
-          <div>
-            <p>Please Log in to see the lists</p>
-          </div>
-        )}
-      </div>
-    </main>
+    <div className="list">
+      {employees.map((employee) => {
+        return (
+          <>
+            <EmployeeCard key={employee.id} {...employee} />
+          </>
+        );
+      })}
+    </div>
   );
 };
 
 export default EmployeeList;
-
-/* < EmployeeCard key= {employee.id} {...employee}> */

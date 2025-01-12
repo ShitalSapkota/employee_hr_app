@@ -1,4 +1,4 @@
-export function calcYearsWorked(startDate) {
+const calcYearsWorked=(startDate)=>{
     const today = new Date();
     const start = new Date(startDate);
 
@@ -13,3 +13,5 @@ export function calcYearsWorked(startDate) {
 
     return years;
 }
+
+export default calcYearsWorked;
