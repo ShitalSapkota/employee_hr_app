@@ -1,68 +1,59 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import "./ViewPage.css";
+import useAxios from "../../hooks/useAxios";
 
 const ViewPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [details, setDetails] = useState();
+
+  const { data, read } = useAxios(`http://localhost:3002/employees/${id}`);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3002/employees/${id}`
-        );
-        setDetails(response.data);
-      } catch (error) {
-        console.error("Error fetching employee details:", error);
-      }
-    };
-    fetchData();
+    read();
   }, []);
 
   return (
     <div>
-      {details ? (
+      {data ? (
         <div className="singlePage-content">
           <div className="content-header">
-            <h2>{details.name}</h2>
+            <h2>{data.name}</h2>
             <div className="skills">
-              {details.skills.map((skill) => (
+              {data.skills.map((skill) => (
                 <span key={skill}>{skill} </span>
               ))}
             </div>
           </div>
-          <hr class="solid" />
+          <hr className="solid" />
           <div className="container">
             <div className="one">
               <p>
-                <b>Age:</b> {details.age}
+                <b>Age:</b> {data.age}
               </p>
               <p>
-                <b>Email:</b> {details.email}
+                <b>Email:</b> {data.email}
               </p>
               <p>
-                <b>Phone:</b> {details.phone}
+                <b>Phone:</b> {data.phone}
               </p>
               <p>
-                <b>Role:</b> {details.role}
+                <b>Role:</b> {data.role}
               </p>
             </div>
             <div className="two">
               <p>
-                <b>Salary:</b> €{details.salary}
+                <b>Salary:</b> €{data.salary}
               </p>
               <p>
-                <b>Department:</b> {details.department}
+                <b>Department:</b> {data.department}
               </p>
               <p>
-                <b>Location:</b> {details.location}
+                <b>Location:</b> {data.location}
               </p>
               <p>
-                <b>Start Date:</b> {details.start_date}
+                <b>Start Date:</b> {data.start_date}
               </p>
             </div>
           </div>

@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../pages/Root";
 import List from "../pages/List";
-import Form from "../pages/Form";
-import Login from "../pages/Login";
-import ErrorPage from "../pages/ErrorPage";
-import ViewPage from "../pages/ViewPage";
-import EmployeesListPage from "../pages/EmployeesListsPage";
+import Form from "../pages/Form/Form";
+import Login from "../pages/Login/Login";
+import ErrorPage from "../pages/Error_Page/ErrorPage";
+import ViewPage from "../pages/View_SinglePage/ViewPage";
+import EmployeesListPage from "../pages/EmployeeName_List/EmployeesListsPage";
 
 const createRoutes = (isLoggedIn, loginHandler) => {
   return createBrowserRouter(

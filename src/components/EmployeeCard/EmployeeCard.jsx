@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import "./EmployeeCard.css";
-import calcYearsWorked from "../utilis/yearsCalc";
+import { useEmployeeStatus } from "../../hooks/useEmployeeStatus";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAxios from "../../hooks/useAxios";
 import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
 
@@ -12,11 +12,10 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [employee, setEmployee] = useState({ role, department, location });
   const navigate = useNavigate();
+  const { error, update } = useAxios("http://localhost:3002/");
 
-  const yearsWorked = calcYearsWorked(start_date);
-
-  const isProbation = yearsWorked < 0.5;
-  const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
+  const { yearsWorked, isProbation, isAnniversary } =
+    useEmployeeStatus(start_date);
 
   const clickHandler = () => {
     setRole(!promotedRole);
@@ -28,11 +27,7 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   };
 
   const handleEdit = async () => {
-    try {
-      await axios.patch(`http://localhost:3002/employees/${id}`, employee);
-    } catch (error) {
-      console.error("Error updating employee:", error);
-    }
+    update(`employees/${id}`, employee);
   };
 
   const renderEditableField = (value, name) =>
@@ -43,6 +38,8 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
     ) : (
       <p className="card-data">{value}</p>
     );
+
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="card">
@@ -76,7 +73,7 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
         </div>
       </div>
 
-      <hr class="solid" />
+      <hr className="solid" />
       <div className="card-container">
         <div className="card-content">
           {renderEditableField(employee.role, "role")}

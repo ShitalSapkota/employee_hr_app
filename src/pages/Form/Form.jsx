@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Button from "../components/Button/Button";
+import useAxios from "../../hooks/useAxios";
+import Button from "../../components/Button/Button";
 import "./Form.css";
 
 const Form = () => {
@@ -9,16 +9,24 @@ const Form = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
 
+  const { create } = useAxios("http://localhost:3002/");
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]:
+        name === "skills"
+          ? value.split(",").map((skill) => skill.trim())
+          : value,
+    }));
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     // console.log(formData);
     try {
-      await axios.post("http://localhost:3002/employees", formData);
+      create("employees", formData);
       setSuccessMessage("Employee added successfully!");
     } catch (err) {
       console.error("Error adding employee:", err);
@@ -33,6 +41,7 @@ const Form = () => {
       phone: "",
       age: "",
       role: "",
+      skills: [],
       department: "",
       salary: "",
       start_date: "",
@@ -59,6 +68,13 @@ const Form = () => {
           <input type="number" name="age" />
           <label htmlFor="name">Role</label>
           <input type="text" name="role" />
+          <label htmlFor="skills">Skills (comma-separated)</label>
+          <input
+            type="text"
+            name="skills"
+            placeholder="e.g., Node.js, MongoDB"
+            required
+          />
           <label htmlFor="name">Salary</label>
           <input type="text" name="salary" />
           <label htmlFor="name">Department</label>

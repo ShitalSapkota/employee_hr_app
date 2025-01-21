@@ -1,0 +1,9 @@
+.name-list-container {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-list {
+    flex: 1;
+}
