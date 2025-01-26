@@ -1,6 +1,7 @@
 import Button from "../../components/Button/Button";
 import useAxios from "../../hooks/useAxios";
 import { useEffect } from "react";
+import styles from "./EmployeesListsPage.module.css";
 
 const EmployeesListPage = () => {
   const {
@@ -19,8 +20,8 @@ const EmployeesListPage = () => {
 
   return (
     <>
-      <div className="name-list-container">
-        <div className="name-list">
+      <div className={styles.nameListContainer}>
+        <div className={styles.nameList}>
           <table>
             <thead>
               <tr>

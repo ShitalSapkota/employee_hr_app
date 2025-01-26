@@ -1,10 +1,10 @@
-form {
+.employeeForm {
     margin-top: 50px;
     width: 300px;
     font-size: 1.5rem;
 }
     
-.employee-form input {
+.employeeForm input {
     width: 300px;
     padding:0.3rem;
     font-size: 1rem;

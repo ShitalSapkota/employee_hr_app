@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import Button from "../../components/Button/Button";
-import "./Form.css";
+import styles from "./Form.module.css";
 
 const Form = () => {
   const [formData, setFormData] = useState();
@@ -56,7 +56,7 @@ const Form = () => {
         <form
           onChange={changeHandler}
           onSubmit={submitHandler}
-          className="employee-form"
+          className={styles.employeeForm}
         >
           <label htmlFor="name">Name</label>
           <input type="text" name="name" />

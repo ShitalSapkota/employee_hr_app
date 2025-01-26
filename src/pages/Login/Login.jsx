@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import styles from "./Login.module.css";
 
 const Login = ({ loginHandler }) => {
   const [username, setUsername] = useState("");
@@ -24,7 +24,7 @@ const Login = ({ loginHandler }) => {
 
   return (
     <main>
-      <form className="login-form" onSubmit={checkCredentials}>
+      <form className={styles.loginForm} onSubmit={checkCredentials}>
         <p>Please log in</p>
         <div>
           <label htmlFor="username">Username</label>
@@ -44,7 +44,7 @@ const Login = ({ loginHandler }) => {
         </div>
         <Button text="Log in" type="submit" />
       </form>
-      <p className="error-message">{errorMessage}</p>
+      <p className={styles.errorMessage}>{errorMessage}</p>
     </main>
   );
 };

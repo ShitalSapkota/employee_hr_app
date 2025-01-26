@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import "./ViewPage.css";
+import styles from "./ViewPage.module.css";
 import useAxios from "../../hooks/useAxios";
 
 const ViewPage = () => {
@@ -17,18 +17,18 @@ const ViewPage = () => {
   return (
     <div>
       {data ? (
-        <div className="singlePage-content">
-          <div className="content-header">
+        <div className={styles.singlePageContent}>
+          <div className={styles.contentHeader}>
             <h2>{data.name}</h2>
-            <div className="skills">
+            <div className={styles.skills}>
               {data.skills.map((skill) => (
                 <span key={skill}>{skill} </span>
               ))}
             </div>
           </div>
-          <hr className="solid" />
-          <div className="container">
-            <div className="one">
+          <hr className={styles.solid} />
+          <div className={styles.container}>
+            <div className={styles.one}>
               <p>
                 <b>Age:</b> {data.age}
               </p>
@@ -42,7 +42,7 @@ const ViewPage = () => {
                 <b>Role:</b> {data.role}
               </p>
             </div>
-            <div className="two">
+            <div className={styles.two}>
               <p>
                 <b>Salary:</b> €{data.salary}
               </p>
