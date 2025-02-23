@@ -14,7 +14,7 @@
     transition: transform 0.3s ease;
 }
 
-.card-header {
+.cardHeader {
     margin: 0;
     padding: 0;
     display: flex;
@@ -30,22 +30,22 @@ hr.solid {
     border-top: 3px solid #c7defc;
 }
 
-.card-image {
+.cardImage {
     height: 13vh;
 }
 
-.custom-color {
+.customColor {
     color: goldenrod;
     font-size: 25px;
 
 }
 
-.custom-size {
+.customSize {
     font-size: 25px;
     margin-left: 10px;
 }
 
-.card-image img {
+.cardImage img {
     width: 100px;
     height: 100px;
     border: #edebeb solid;
@@ -53,7 +53,7 @@ hr.solid {
     background-color: rgb(190, 228, 253);
 }
 
-.card-data {
+.cardData {
     font-size: 16px;
 }
 
@@ -65,25 +65,20 @@ hr.solid {
     text-transform: uppercase;
 }
 
-.card-container{
+.cardContainer{
     display: flex;
     justify-content: space-between;
 }
 
-.card-content {
+.cardContent {
     display: block;
     align-content: end;
 }
 
-.card-icons {
+.cardIcons {
     display: flex;
     align-items: center;
     color: rgb(147, 2, 2);
-}
-
-.card-icon-message {
-    color: rgb(147, 19, 70);
-    margin-left: 10px;
 }
 
 .date{
@@ -114,7 +109,7 @@ input{
         padding: 5px;
     }
 
-    .card-header {
+    .cardHeader {
         margin: 0;
         padding: 0;
     }
@@ -128,7 +123,7 @@ input{
         border-top: 2px solid #c7defc;
     }
 
-    .card-image {
+    .cardImage {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -136,19 +131,19 @@ input{
         flex-direction: column;
     }
 
-    .custom-color {
+    .customColor {
         font-size: 20px;
     }
 
 
 
-    .card-image img {
+    .cardImage img {
         width: 100px;
         height: 100px;
         border-radius: 60px;
     }
 
-    .card-data {
+    .cardData {
         font-size: 14px;
     }
 
@@ -158,19 +153,19 @@ input{
         margin: 0;
     }
 
-    .card-content {
+    .cardContent {
         display: block;
         align-content: end;
     }
 
-    .card-icons {
+    .cardIcons {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 10px;
     }
 
-    .card-icon-message {
+    .cardIconMessage {
         font-size: smaller;
         margin-left: 5px;
     }

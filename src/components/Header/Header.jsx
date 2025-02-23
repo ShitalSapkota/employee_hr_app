@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 const Header = ({ isLoggedIn, loginHandler }) => {
   const buttonText = isLoggedIn ? "Log out" : "Log in";
 
   return (
-    <header>
+    <header className={styles.header}>
       <Link to="/">
         <h1>Employee Dashboard</h1>
       </Link>
-      <div className="navbar">
+      <div className={styles.navbar}>
         <nav>
           <ul>
             <li>

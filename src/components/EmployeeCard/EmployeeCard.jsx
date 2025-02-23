@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../Button/Button";
-import "./EmployeeCard.css";
-import calcYearsWorked from "../utilis/yearsCalc";
+import styles from "./EmployeeCard.module.css";
+import { useEmployeeStatus } from "../../hooks/useEmployeeStatus";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAxios from "../../hooks/useAxios";
 import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
 
@@ -12,11 +12,10 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [employee, setEmployee] = useState({ role, department, location });
   const navigate = useNavigate();
+  const { error, update } = useAxios("http://localhost:3002/");
 
-  const yearsWorked = calcYearsWorked(start_date);
-
-  const isProbation = yearsWorked < 0.5;
-  const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
+  const { yearsWorked, isProbation, isAnniversary } =
+    useEmployeeStatus(start_date);
 
   const clickHandler = () => {
     setRole(!promotedRole);
@@ -28,31 +27,29 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   };
 
   const handleEdit = async () => {
-    try {
-      await axios.patch(`http://localhost:3002/employees/${id}`, employee);
-    } catch (error) {
-      console.error("Error updating employee:", error);
-    }
+    update(`employees/${id}`, employee);
   };
 
   const renderEditableField = (value, name) =>
     isEdit ? (
-      <div className="inputField">
+      <div className={styles.inputField}>
         <input value={value} name={name} onChange={handleInputChange} />
       </div>
     ) : (
-      <p className="card-data">{value}</p>
+      <p className={styles.cardData}>{value}</p>
     );
 
-  return (
-    <div className="card">
-      <div className="card-header">
-        <p className="name">{name}</p>
+  if (error) return <p>{error}</p>;
 
-        <div className="card-icons">
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardHeader}>
+        <p className={styles.name}>{name}</p>
+
+        <div className={styles.cardIcons}>
           {promotedRole && (
             <Tooltip title="Team Lead" position="bottom" trigger="mouseenter">
-              <i class="fa-solid fa-star custom-color"></i>
+              <i className={`fa-solid fa-star ${styles.customColor}`}></i>
             </Tooltip>
           )}
           {isAnniversary && (
@@ -61,7 +58,9 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
               position="bottom"
               trigger="mouseenter"
             >
-              <i class="fa-solid fa-champagne-glasses custom-size"></i>
+              <i
+                className={`fa-solid fa-champagne-glasses ${styles.customSize}`}
+              ></i>
             </Tooltip>
           )}
           {isProbation && (
@@ -70,24 +69,24 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
               position="bottom"
               trigger="mouseenter"
             >
-              <i class="fa-solid fa-bell custom-size"></i>
+              <i className={`fa-solid fa-bell  ${styles.customSize}`}></i>
             </Tooltip>
           )}
         </div>
       </div>
 
-      <hr class="solid" />
-      <div className="card-container">
-        <div className="card-content">
+      <hr className={styles.solid} />
+      <div className={styles.cardContainer}>
+        <div className={styles.cardContent}>
           {renderEditableField(employee.role, "role")}
           {renderEditableField(employee.department, "department")}
           {renderEditableField(employee.location, "location")}
         </div>
-        <div className="card-image">
+        <div className={styles.cardImage}>
           <img src={`https://robohash.org/${name}?set=set5`} />
         </div>
       </div>
-      <div className="button-container">
+      <div className={styles.buttonContainer}>
         <Button
           onClick={clickHandler}
           text={promotedRole ? "Demote" : "Promote"}
@@ -107,9 +106,9 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
           role="secondary"
         />
       </div>
-      <p className="years">
+      <p className={styles.years}>
         {yearsWorked} <span>years in school </span>
-        <span className="date">({start_date})</span>
+        <span className={styles.date}>({start_date})</span>
       </p>
     </div>
   );

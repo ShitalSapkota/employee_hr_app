@@ -1,0 +1,9 @@
+.nameListContainer {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nameList {
+    flex: 1;
+}

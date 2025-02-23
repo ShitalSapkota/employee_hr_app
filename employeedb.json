@@ -264,6 +264,24 @@
       "salary": "6000",
       "start_date": "2019-11-04",
       "location": "Turku"
+    },
+    {
+      "id": "98f4",
+      "name": "ttt",
+      "email": "shital.sapkota1@gmail.com",
+      "phone": "2222222333",
+      "age": "22",
+      "role": "Student",
+      "skills": [
+        "Node.js",
+        "MongoDB",
+        "JS",
+        "CSS"
+      ],
+      "salary": "4500",
+      "department": "IT",
+      "start_date": "2025-01-01",
+      "location": "Turku"
     }
   ]
 }
