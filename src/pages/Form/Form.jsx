@@ -10,7 +10,7 @@ const Form = () => {
   const navigate = useNavigate();
 
   const { create } = useAxios(
-    "https://my-json-server.typicode.com/shitalsapkota/mock-api/db"
+    "https://my-json-server.typicode.com/shitalsapkota/mock-api/employees"
   );
 
   const changeHandler = (e) => {
