@@ -9,11 +9,11 @@ const ViewPage = () => {
   const navigate = useNavigate();
 
   const { data, read } = useAxios(
-    `https://my-json-server.typicode.com/shitalsapkota/mock-api/employees/${id}`
+    "https://my-json-server.typicode.com/shitalsapkota/mock-api/employees"
   );
 
   useEffect(() => {
-    read();
+    read(`/${id}`);
   }, []);
 
   return (
