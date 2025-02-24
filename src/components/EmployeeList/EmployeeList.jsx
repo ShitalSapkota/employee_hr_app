@@ -9,10 +9,10 @@ const EmployeeList = () => {
     loading,
     error,
     read,
-  } = useAxios("https://my-json-server.typicode.com/shitalsapkota/mock-api/db");
+  } = useAxios("https://my-json-server.typicode.com/shitalsapkota/mock-api");
 
   useEffect(() => {
-    read("employees");
+    read("/employees");
   }, []);
 
   if (loading) return <p>Loading...</p>;
