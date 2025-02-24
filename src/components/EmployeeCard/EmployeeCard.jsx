@@ -12,7 +12,7 @@ const EmployeeCard = ({ id, name, role, department, location, start_date }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [employee, setEmployee] = useState({ role, department, location });
   const navigate = useNavigate();
-  const { error, update } = useAxios("https://my-json-server.typicode.com/shitalsapkota/mock-api/db");
+  const { error, update } = useAxios("http://localhost:3002/");
 
   const { yearsWorked, isProbation, isAnniversary } =
     useEmployeeStatus(start_date);

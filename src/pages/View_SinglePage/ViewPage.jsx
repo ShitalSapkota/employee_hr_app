@@ -8,9 +8,7 @@ const ViewPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, read } = useAxios(
-    `https://my-json-server.typicode.com/shitalsapkota/mock-api/employees/${id}`
-  );
+  const { data, read } = useAxios(`http://localhost:3002/employees/${id}`);
 
   useEffect(() => {
     read();

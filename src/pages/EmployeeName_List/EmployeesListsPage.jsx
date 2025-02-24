@@ -9,9 +9,7 @@ const EmployeesListPage = () => {
     loading,
     error,
     read,
-  } = useAxios(
-    `https://my-json-server.typicode.com/shitalsapkota/mock-api/employees`
-  );
+  } = useAxios(`http://localhost:3002/employees`);
 
   useEffect(() => {
     read();

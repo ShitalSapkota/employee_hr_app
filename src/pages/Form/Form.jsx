@@ -9,9 +9,7 @@ const Form = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
 
-  const { create } = useAxios(
-    "https://my-json-server.typicode.com/shitalsapkota/mock-api/db"
-  );
+  const { create } = useAxios("http://localhost:3002/");
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
