@@ -26,32 +26,33 @@
     text-transform: uppercase;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (min-width: 600px) and (max-width: 1280px) {
     .header {
-        font-size: 1.2rem;
-        background-color: darkblue;
-        color: rgb(239, 241, 247);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 10px;
-        padding: 10px;
+      font-size: 1rem;
+      background-color: darkblue;
+      color: rgb(239, 241, 247);
+      display: flex;
+      justify-content: space-between;
+      border-radius: 10px;
+      height: 13vh;
     }
-
+    
     .header h1 {
-        font-size: 1.8rem;
-        margin: 10px 0;
+      font-size: 1.5rem;
+      margin: 30px 0 0 20px;
+      text-transform: uppercase;
     }
-
-    nav ul {
-        margin-top: 10px;
-        padding: 0;
+  
+    nav ul{
+      margin-top: 0;
     }
-
-    .header nav ul li {
-        display: block;
-        text-align: center;
-        list-style: none;
-        padding: 10px;
+  
+    header nav ul li {
+      display: inline-block;
+      text-align: center;
+      list-style: none;
+      padding: 15px;
+      text-transform: uppercase;
     }
-}
+  }
+  
